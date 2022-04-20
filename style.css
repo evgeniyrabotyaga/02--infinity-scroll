@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Faster One, sans-serif;
+  background-color: #aaff65;
+}
+
+h1 {
+  font-size: 5rem;
+  letter-spacing: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2.5rem 0.3rem 1.5rem 0.3rem;
+  color: #333;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.loader img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image-container {
+  margin: 1rem 20%;
+}
+
+.image-container img {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .image-container {
+    margin: 1rem 10%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  html {
+    font-size: 50%;
+  }
+
+  .image-container {
+    margin: 1rem 2rem;
+  }
+
+  .loader img {
+    height: 20rem;
+  }
+}
