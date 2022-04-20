@@ -48,7 +48,7 @@ const getPhotos = async function () {
 
     displayPhotos();
   } catch (err) {
-    alert(`${err} 💥💥💥`);
+    alert(`💥💥💥 Something went wrong. Please try later! 💥💥💥`);
   }
 };
 
