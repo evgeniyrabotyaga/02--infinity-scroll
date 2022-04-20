@@ -19,27 +19,37 @@ const imageLoaded = function () {
   }
 };
 
-// Create Elements add to Dom
-const displayPhotos = function () {
+function setAttributes(element, attributes) {
+  for (const key in attributes) {
+    element.setAttribute(key, attributes[key]);
+  }
+}
+
+function displayPhotos() {
   imagesLoaded = 0;
   totalImages = photosArray.length;
-
+  // Run function for each object in photosArray
   photosArray.forEach(photo => {
-    if (photo.alt_description === null)
-      photo.alt_description = 'The description is undefined. Sorry :)';
-    const image = document.createElement('img');
-    image.setAttribute('src', photo.urls.regular);
-    image.setAttribute('alt', photo.alt_description);
-    image.setAttribute('title', photo.alt_description);
-    image.addEventListener('load', imageLoaded);
-    const markup = `
-        <a href="${photo.links.html}" target="_blank">
-            ${image}
-        </a>
-      `;
-    imageContainer.insertAdjacentHTML('afterbegin', markup);
+    // Create <a> to link to full photo
+    const item = document.createElement('a');
+    setAttributes(item, {
+      href: photo.links.html,
+      target: '_blank',
+    });
+    // Create <img> for photo
+    const img = document.createElement('img');
+    setAttributes(img, {
+      src: photo.urls.regular,
+      alt: photo.alt_description,
+      title: photo.alt_description,
+    });
+    // Event Listener, check when each is finished loading
+    img.addEventListener('load', imageLoaded);
+    // Put <img> inside <a>, then put both inside imageContainer Element
+    item.appendChild(img);
+    imageContainer.appendChild(item);
   });
-};
+}
 
 const getPhotos = async function () {
   try {
@@ -48,7 +58,7 @@ const getPhotos = async function () {
 
     displayPhotos();
   } catch (err) {
-    alert(`💥💥💥 Something went wrong. Please try later! 💥💥💥`);
+    console.log(err);
   }
 };
 
